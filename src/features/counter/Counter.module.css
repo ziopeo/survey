@@ -1,0 +1,20 @@
+
+
+  .value {
+    font-size: 25px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 2px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+
+  
+  .textbox {
+    font-size: 32px;
+    padding: 2px;
+    width: 64px;
+    text-align: center;
+    margin-right: 4px;
+  }
+
