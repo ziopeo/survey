@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Counter } from './features/counter/Counter'
+import './App.css'
+import Survey from './features/survey/Survey'
+import UserForm from './features/user/UserForm';
+import { Container, Row, Col } from 'react-bootstrap';
 
-function App() {
+const App: React.FC = () => {
+  const [surve, setSurvey] = useState(false);
+  const [userForm, setUserForm] = useState(true);
+  const showsurve = () => {
+    setSurvey(true);
+    setUserForm(false);
+  };
+
+  const showuserform = () => {
+    setSurvey(false);
+    setUserForm(true);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        Test Survey
+        <Counter />
       </header>
+      <Container>
+        <Row>
+          
+            {userForm && (
+              <div>
+                <UserForm showSurvey={showsurve} />
+              </div>
+            )}
+            {surve && (
+              <Survey showUserForm={showsurve} />
+            )} 
+        </Row>
+      </Container> 
     </div>
   );
-}
+};
 
 export default App;
