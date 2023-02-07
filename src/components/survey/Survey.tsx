@@ -105,54 +105,53 @@ useEffect(() => {
   
 
   return (
-    <div className="container">
-      <Card className="bg-light border mx-auto my-5" style={{ width: "60%" }}>
+    <div className="container d-flex justify-content-center align-items-center">
+      <Card className="bg-light border mx-auto" style={{ maxWidth: "50%" }}>
         <Card.Body>
           <h1 className="text-center">
             Utente:{" "}
             <Badge bg="secondary">{userdata.username}</Badge>
           </h1>
-          {currentQuestion ? (
-            <h2 className="text-center">{currentQuestion.question}</h2>
+
+          {questions.length === 0 ? (
+            <div className="text-center">
+              <p>Caricamento in corso...</p>
+            </div>
+          ) : currentQuestion ? (
+            <>
+              <h2 className="text-center">{currentQuestion.question}</h2>
+              <Form className="mx-3">
+                {currentQuestion.answers.map((answer, index) => (
+                  <Form.Check
+                    key={index}
+                    type="radio"
+                    label={answer.answer}
+                    name={currentQuestion.question}
+                    id={answer.answersId}
+                    value={answer.answersId}
+                    onChange={() => handleAnswerSelection(answer.answersId)}
+                    checked={answer.answersId === checked}
+                    className="my-3"
+                  />
+                ))}
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    handleNextButtonClick();
+                    handleShow();
+                  }}
+                  disabled={!selectedAnswerId}
+                  className="mt-5"
+                >
+                  Successivo
+                </Button>
+              </Form>
+            </>
           ) : (
             <h2 className="text-center">
               Complimenti{" "}
               <Badge bg="secondary">Hai completato il sondaggio!</Badge>
             </h2>
-          )}
-          {questions.length === 0 ? (
-            <div className="loading-indicator text-center">
-              <p>Caricamento in corso...</p>
-            </div>
-          ) : (
-            <Form className="mx-3">
-              {currentQuestion
-                ? currentQuestion.answers.map((answer, index) => (
-                    <Form.Check
-                      key={index}
-                      type="radio"
-                      label={answer.answer}
-                      name={currentQuestion.question}
-                      id={answer.answersId}
-                      value={answer.answersId}
-                      onChange={() => handleAnswerSelection(answer.answersId)}
-                      checked={answer.answersId === checked}
-                      className="my-3"
-                    />
-                  ))
-                : null}
-              <Button
-                variant="primary"
-                onClick={() => {
-                  handleNextButtonClick();
-                  handleShow();
-                }}
-                disabled={!selectedAnswerId}
-                className="mt-5"
-              >
-                Successivo
-              </Button>
-            </Form>
           )}
           <ProgressBar
             now={getProgressPercentage(currentQuestionIndex, questions.length)}
@@ -177,6 +176,6 @@ useEffect(() => {
       </Card>
     </div>
   );
-  };
+};
   
 export default Survey;
