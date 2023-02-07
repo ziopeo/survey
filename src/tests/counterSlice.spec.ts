@@ -1,7 +1,7 @@
 import counterReducer, {
     CounterState,
     incrementByAmount,
-  } from './counterSlice';
+  } from '../store/counterSlice';
   
   describe('counter reducer', () => {
     const initialState: CounterState = {

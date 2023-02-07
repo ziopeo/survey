@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Counter } from './features/counter/Counter'
+import { Counter } from './components/counter/Counter'
 import './App.css'
-import Survey from './features/survey/Survey'
-import UserForm from './features/user/UserForm';
+import Survey from './components/survey/Survey'
+import UserForm from './components/user/UserForm';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const App: React.FC = () => {

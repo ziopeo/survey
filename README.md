@@ -11,19 +11,19 @@ Il backend utilizzerà un database json fornito e un server mocking per le web A
 
 Il flusso di lavoro consiste nella lettura dei dati dal web service, acquisizione dei dati utente (nome ed email), presentazione delle domande con tre possibili risposte, selezione di una risposta da parte dell'utente, visualizzazione del testo di risposta corretta/errata, avanzamento della domanda successiva attraverso un wizard, raccolta di tutte le domande inserite e invio dei dati al web service.
 
-Per implementare ho creato 3 componenti
+###Per implementare ho creato 3 componenti
 
-### Counter
+#### Counter
 Crea un componente React che visualizza il punteggio di un sondaggio. Il punteggio viene gestito tramite Redux, che utilizza uno "slice" per mantenere lo stato del contatore. Il contatore viene inizialmente impostato a 0. Viene definita un'azione per incrementare il contatore di un numero specificato. Il componente utilizza i hook di React per accedere allo stato del contatore e alla funzione dispatch. Il componente visualizza e aggiorna il punteggio a seconda delle risposte.
 
-### Survey
+#### Survey
 Creo un componente React che rappresenta un sondaggio denominato "Survey". Utilizza i hook di React useState e useEffect, insieme alla libreria axios, per gestire la comunicazione con un'API REST. Mostra una domanda alla volta all'utente e salva le risposte scelte dall'utente nello stato. Mostra anche il progresso del sondaggio e un modale che indica se la risposta scelta dall'utente è corretta o sbagliata. Alla fine del sondaggio, invia i dati dell'utente e i punti ottenuti all'API per l'archiviazione.
 
-### User (UserForm)
+#### User (UserForm)
 Il componente UserForm utilizza i hook di React useState e useAppDispatch per gestire i dati utente in un form e inviare i dati al negozio Redux. Il codice utilizza anche la libreria Bootstrap per creare un form HTML.
 Con userSlice.ts si definisce il riduttore Redux che gestisce i dati dell'utente. Il codice utilizza createSlice di Redux Toolkit per creare uno slice del negozio che gestisce lo stato dell'utente. Il riduttore ha uno stato iniziale di dati utente vuoti e una sola azione, updateUserData, che modifica lo stato dell'utente in base ai dati inviati
 
-### Sintesi formale
+## Sintesi formale
 
 Ho chiaramente cercato di adottare un Metodologia Agile rispetto all'implementazione stessa, rivolta a consolidare una parte per poi proseguire nelle parti adiacenti.
 

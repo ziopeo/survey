@@ -4,8 +4,8 @@ Definisco le azioni per incrementare e decrementare il contatore, nonché un'azi
 Queste azioni possono essere dispatchate dalle componenti React per modificare lo stato del contatore nel Redux store. 
 La funzione "selectCount" viene utilizzata per selezionare il valore corrente del contatore dallo stato del Redux store.
 */
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../../app/store';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from './store';
 
 // Definisco l'interfaccia per lo stato del contatore
 export interface CounterState {
