@@ -16,3 +16,9 @@ export  interface UserAnswer {
     answers: string[];
     totalPoint: number;
   }
+
+  // Interfaccia per rappresentare i dati dell'utente
+export interface UserData {
+  username: string;
+  email: string;
+}
